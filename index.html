@@ -31,7 +31,7 @@
                             Need a little inspiration for dinner?  Tell us what you're in the mood for and we'll help you find recipes, or don't tell us anything and let us surprise you!
                         </p>
                     </div>
-                    <div class="columns">
+                    <div class="columns mt-2">
                         <div class="column">
                             <div class="field">
                                 <label for="cuisine-menu" class="label">Select a type of cuisine:</label>
@@ -62,23 +62,7 @@
                                         <option value="spanish">Spanish</option>
                                         <option value="thai">Thai</option>
                                         <option value="vietnamese">Vietnamese</option>
-                                        <option value="none">Surprise me!</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="protein-menu" class="label">Select a protein:</label>
-                                <div class="select is-success is-rounded is-fullwidth">
-                                    <select id="protein-menu">
-                                        <option value="" disabled selected hidden>Choose a Protein</option>
-                                        <option value="beef">Beef</option>
-                                        <option value="chicken">Chicken</option>
-                                        <option value="fish">Fish</option>
-                                        <option value="pork">Pork</option>
-                                        <option value="seafood">Seafood</option>
-                                        <option value="tofu">Tofu</option>
-                                        <option value="vegetarian">Vegetarian</option>
-                                        <option value="none">Doesn't matter!</option>
+                                        <option value="">Surprise me!</option>
                                     </select>
                                 </div>
                             </div>
@@ -99,21 +83,23 @@
                                         <option value="vegan">Vegan</option>
                                         <option value="vegetarian">Vegetarian</option>
                                         <option value="whole30">Whole30</option>
-                                        <option value="none">None</option>
+                                        <option value="">None</option>
                                     </select>
                                 </div>
                             </div>
+                        </div>    
+                        <div class="column">
                             <div class="field">
                                 <label for="ingredients" class="label">Ingredients:</label>
                                 <div class="control">
                                     <input type="text" class="input is-success is-rounded is-fullwidth" id='ingredients' placeholder="List some ingredients you'd like to use!">
                                 </div>
                             </div>
-                        </div>                
+                        </div>            
                     </div>
                     <div class="label">Dietary Restrictions:</div>
                     <div class="columns">
-                        <div class="column">
+                        <div class="column ml-3">
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="dairy"/>
                                 No Dairy
@@ -131,7 +117,7 @@
                                 No Grains
                             </label>
                         </div>
-                        <div class="column">
+                        <div class="column ml-3">
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="peanut" />
                                 No Peanuts
@@ -149,7 +135,7 @@
                                 No Shellfish
                             </label>
                         </div>
-                        <div class="column">
+                        <div class="column ml-3">
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="soy" />
                                 No Soy

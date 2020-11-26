@@ -4,30 +4,37 @@
     display: border-box;
 }
 
-#hero-section {
+.bg {
     background-image: url(../images/hero-img.jpeg);
-    background-size: cover;
+    height: 100vh;
+    position: relative;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
 }
 
-#hero-heading {
-    color: rgba(255, 255, 255, .9);
-    text-shadow: 2px 2px 8px #000;
+.container-card {
+    height: 80vh;
+    width: 80vw;
+    margin: 5% 10%;
+    background-color: rgba(255, 255, 255);
+    position: absolute;
+    border-radius: 10px;
+}
+
+.nav-tab .container ul li a {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.tabs li.is-active a {
+    color: hsl(141, 71%, 48%);
 }
 
 .is-not-active a {
     background-color: rgba(255, 255, 255, .3);
     color: rgba(0, 0, 0, .5); /* not working to turn links black? */
-}
-
-#form-container {
-    padding: 50px;
-    margin-bottom: 50px;
-    border: 1px solid rgba(0, 0, 0, .5);
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
-    border-radius: 15px;
-    width: 60%;
 }
 
 .field label {

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    display: border-box;
+}
+
+#hero-section {
+    background-image: url(../images/hero-img.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#hero-heading {
+    color: rgba(255, 255, 255, .9);
+    text-shadow: 2px 2px 8px #000;
+}
+
+.is-not-active a {
+    background-color: rgba(255, 255, 255, .3);
+    color: rgba(0, 0, 0, .5); /* not working to turn links black? */
+}

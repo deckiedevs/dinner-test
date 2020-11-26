@@ -106,7 +106,7 @@
                             <div class="field">
                                 <label for="ingredients" class="label">Ingredients:</label>
                                 <div class="control">
-                                    <input type="text" class="input is-success is-rounded is-fullwidth" placeholder="List some ingredients you'd like to use!">
+                                    <input type="text" class="input is-success is-rounded is-fullwidth" id='ingredients' placeholder="List some ingredients you'd like to use!">
                                 </div>
                             </div>
                         </div>                
@@ -114,43 +114,59 @@
                     <div class="label">Dietary Restrictions:</div>
                     <div class="columns">
                         <div class="column">
-                            <input type="checkbox" id="dairy" />
-                            <label for="dairy" class="checkbox">No Dairy</label>
-                            <br />
-                            <input type="checkbox" id="egg" />
-                            <label for="egg" class="checkbox">No Eggs</label>
-                            <br />
-                            <input type="checkbox" id="gluten" />
-                            <label for="gluten" class="checkbox">No Gluten</label>
-                            <br />
-                            <input type="checkbox" id="grain" />
-                            <label for="grain" class="checkbox">No Grains</label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="dairy"/>
+                                No Dairy
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="egg" />
+                                No Eggs
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="gluten" />
+                                No Gluten
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="grain" />
+                                No Grains
+                            </label>
                         </div>
                         <div class="column">
-                            <input type="checkbox" id="peanut" />
-                            <label for="peanut" class="checkbox">No Peanuts</label>
-                            <br />
-                            <input type="checkbox" id="seafood" />
-                            <label for="seafood" class="checkbox">No Seafood</label>
-                            <br />
-                            <input type="checkbox" id="sesame" />
-                            <label for="sesame" class="checkbox">No Sesame</label>
-                            <br />
-                            <input type="checkbox" id="shellfish" />
-                            <label for="shellfish" class="checkbox">No Shellfish</label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="peanut" />
+                                No Peanuts
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="seafood" />
+                                No Seafood
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="sesame" />
+                                No Sesame
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="shellfish" />
+                                No Shellfish
+                            </label>
                         </div>
                         <div class="column">
-                            <input type="checkbox" id="soy" />
-                            <label for="soy" class="checkbox">No Soy</label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="soy" />
+                                No Soy
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="sulfite" />
+                                No Sulfites
+                            </label><br />
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="tree nut" />
+                                No Tree Nuts
+                            </label>
                             <br />
-                            <input type="checkbox" id="sulfite" />
-                            <label for="sulfite" class="checkbox">No Sulfites</label>
-                            <br />
-                            <input type="checkbox" id="tree-nut" />
-                            <label for="tree-nut" class="checkbox">No Tree Nuts</label>
-                            <br />
-                            <input type="checkbox" id="wheat" />
-                            <label for="wheat" class="checkbox">No Wheat</label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="restriction" value="wheat" />
+                                No Wheat
+                            </label>
                         </div>
                     </div>
                     <button type="button" class="button is-success" id="search-btn">Search!</button>
@@ -159,6 +175,6 @@
         </div>
     </div>
 
-    <script src=".assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

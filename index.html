@@ -9,11 +9,11 @@
 </head>
 <body>
     <!-- hero -->
-    <header class="hero is-success is-large is-bold" id="hero-section">
+    <header class="hero is-success is-medium is-bold" id="hero-section">
         <div class="hero-head">
             <div class="container">
                 <div class="navbar-brand">
-                    <h1 class="is-size-3-mobile is-size-1 is-capitalized has-text-weight-semibold" id="hero-heading" href="/">
+                    <h1 class="is-size-3-mobile is-size-2 is-capitalized has-text-weight-semibold" id="hero-heading" href="/">
                         What's For Dinner?
                     </h1>
                 </div>
@@ -35,7 +35,139 @@
             </nav>
         </div>
     </header>
-
+    <main>
+        <!-- search form -->
+        <div class="container mt-6" id="form-container">
+            <div>
+                <p>
+                    Need a little inspiration for dinner?  Tell us what you're in the mood for and we'll help you find recipes, or don't tell us anything and let us surprise you!
+                </p>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label for="cuisine-menu" class="label">Select a type of cuisine:</label>
+                        <div class="select is-success is-rounded is-fullwidth">
+                            <select id="cuisine-menu">
+                                <option value="" disabled selected hidden>Choose a Cuisine</option>
+                                <option value="african">African</option>
+                                <option value="american">American</option>
+                                <option value="british">British</option>
+                                <option value="cajun">Cajun</option>
+                                <option value="caribbean">Caribbean</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="european">European</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="greek">Greek</option>
+                                <option value="indian">Indian</option>
+                                <option value="irish">Irish</option>
+                                <option value="italian">Italian</option>
+                                <option value="japanese">Japanese</option>
+                                <option value="jewish">Jewish</option>
+                                <option value="korean">Korean</option>
+                                <option value="latin american">Latin</option>
+                                <option value="mediterranean">Mediterranean</option>
+                                <option value="mexican">Mexican</option>
+                                <option value="middle eastern">Middle Eastern</option>
+                                <option value="southern">Southern</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="thai">Thai</option>
+                                <option value="vietnamese">Vietnamese</option>
+                                <option value="none">Surprise me!</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="protein-menu" class="label">Select a protein:</label>
+                        <div class="select is-success is-rounded is-fullwidth">
+                            <select id="protein-menu">
+                                <option value="" disabled selected hidden>Choose a Protein</option>
+                                <option value="beef">Beef</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="fish">Fish</option>
+                                <option value="pork">Pork</option>
+                                <option value="seafood">Seafood</option>
+                                <option value="tofu">Tofu</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="none">Doesn't matter!</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label for="diet-menu" class="label">Diet Considerations:</label>
+                        <div class="select is-success is-rounded is-fullwidth">
+                            <select id="diet-menu">
+                                <option value="" disabled selected hidden>Choose a Diet Type</option>
+                                <option value="gluten-free">Gluten Free</option>
+                                <option value="ketogenic">Ketogenic</option>
+                                <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+                                <option value="ovo-vegetarian">Ovo-Vegetarian</option>
+                                <option value="paleo">Paleo</option>
+                                <option value="pescetarian">Pescetarian</option>
+                                <option value="primal">Primal</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="whole30">Whole30</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="ingredients" class="label">Ingredients:</label>
+                        <div class="control">
+                            <input type="text" class="input is-success is-rounded is-fullwidth" placeholder="List some ingredients you'd like to use!">
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="label">Dietary Restrictions:</div>
+            <div class="columns">
+                <div class="column">
+                    <input type="checkbox" id="dairy" />
+                    <label for="dairy" class="checkbox">No Dairy</label>
+                    <br />
+                    <input type="checkbox" id="egg" />
+                    <label for="egg" class="checkbox">No Eggs</label>
+                    <br />
+                    <input type="checkbox" id="gluten" />
+                    <label for="gluten" class="checkbox">No Gluten</label>
+                    <br />
+                    <input type="checkbox" id="grain" />
+                    <label for="grain" class="checkbox">No Grains</label>
+                </div>
+                <div class="column">
+                    <input type="checkbox" id="peanut" />
+                    <label for="peanut" class="checkbox">No Peanuts</label>
+                    <br />
+                    <input type="checkbox" id="seafood" />
+                    <label for="seafood" class="checkbox">No Seafood</label>
+                    <br />
+                    <input type="checkbox" id="sesame" />
+                    <label for="sesame" class="checkbox">No Sesame</label>
+                    <br />
+                    <input type="checkbox" id="shellfish" />
+                    <label for="shellfish" class="checkbox">No Shellfish</label>
+                </div>
+                <div class="column">
+                    <input type="checkbox" id="soy" />
+                    <label for="soy" class="checkbox">No Soy</label>
+                    <br />
+                    <input type="checkbox" id="sulfite" />
+                    <label for="sulfite" class="checkbox">No Sulfites</label>
+                    <br />
+                    <input type="checkbox" id="tree-nut" />
+                    <label for="tree-nut" class="checkbox">No Tree Nuts</label>
+                    <br />
+                    <input type="checkbox" id="wheat" />
+                    <label for="wheat" class="checkbox">No Wheat</label>
+                </div>
+            </div>
+            <button type="button" class="button is-success" id="search-btn">Search!</button>
+        </div>
+    </main>
     <script src=".assets/js/script.js"></script>
 </body>
 </html>

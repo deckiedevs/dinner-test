@@ -20,3 +20,16 @@
     background-color: rgba(255, 255, 255, .3);
     color: rgba(0, 0, 0, .5); /* not working to turn links black? */
 }
+
+#form-container {
+    padding: 50px;
+    margin-bottom: 50px;
+    border: 1px solid rgba(0, 0, 0, .5);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    width: 60%;
+}
+
+.field label {
+    margin-top: 20px;
+}

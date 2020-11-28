@@ -1,4 +1,9 @@
 const searchBtn = document.getElementById('search-btn');
+const searchTab = document.getElementById('search-tab');
+const recipesTab = document.getElementById('recipes-tab');
+const favoritesTab = document.getElementById('recipes-tab');
+const formCont = document.getElementById('form-container');
+const recipeCont = document.getElementById('recipe-container');
 const apiKey = ''
 
 var getInput = function(event) {
@@ -70,10 +75,19 @@ var getRecipe = function(recipe) {
 
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                displayRecipes(data);
             })
         } 
     })
+}
+
+var displayRecipes = function(recipes) {
+    searchTab.classList.remove('is-active', 'active-tab');
+    favoritesTab.classList.remove('is-active', 'active-tab');
+    recipesTab.classList.add('is-active', 'active-tab');
+
+    formCont.classList.add('hide');
+    recipeCont.classList.remove('hide');
 }
 
 searchBtn.addEventListener('click', getInput)

@@ -4,6 +4,10 @@
     display: border-box;
 }
 
+.hide {
+    display: none;
+}
+
 .bg {
     background-image: url(../images/hero-img.jpeg);
     height: 100vh;
@@ -32,10 +36,10 @@
     color: hsl(141, 71%, 48%);
 }
 
-.is-not-active a {
+/* .is-not-active a {
     background-color: rgba(255, 255, 255, .3);
-    color: rgba(0, 0, 0, .5); /* not working to turn links black? */
-}
+    color: rgba(0, 0, 0, .5);
+} */
 /* 
 .field label {
     margin-top: 20px;

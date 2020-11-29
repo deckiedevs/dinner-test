@@ -1,10 +1,10 @@
-const searchBtn = document.getElementById('search-btn');
 const searchTab = document.getElementById('search-tab');
 const recipesTab = document.getElementById('recipes-tab');
 const favoritesTab = document.getElementById('recipes-tab');
 const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
-const apiKey = ''
+const searchBtn = document.getElementById('search-btn');
+const apiKey = '';
 
 var getInput = function(event) {
     event.preventDefault();
@@ -51,16 +51,34 @@ var getData = function(cuisine, diet, ingr, restr) {
                 if (data.results.length > 0) {
                     getRecipe(data);
                 } else {
-                    alert(`No recipes found!`) // switch to modals, enter fewer search parameters
+                    errorMsg(`No recipes found!  Try using fewer search parameters.`)
                 }
             });
         } else {
-            alert(`Error: ${response.statusText}`) // switch to modals later
+            errorMsg(`Error: ${response.statusText}`);
         }
     })
     .catch(function(error) {
-        alert('Unable to load recipes.'); // switch to modals later
+        errorMsg('Unable to load recipes.  Please try again later.');
     });
+};
+
+var errorMsg = function(message) {
+    var modalEl = document.querySelector('.modal');
+    var modalTextEl = document.querySelector('.modal-content');
+    var modalBg = document.querySelector('.modal-background');
+    var modalBtn = document.getElementById('modal-btn'); 
+
+    modalEl.classList.add('is-active');
+    modalTextEl.textContent = message;
+
+    closeModal = event => {
+        event.preventDefault();
+        modalEl.classList.remove('is-active')
+    }
+
+    modalBg.addEventListener('click', closeModal);
+    modalBtn.addEventListener('click', closeModal);
 };
 
 var getRecipe = function(recipe) {
@@ -90,4 +108,4 @@ var displayRecipes = function(recipes) {
     recipeCont.classList.remove('hide');
 }
 
-searchBtn.addEventListener('click', getInput)
+searchBtn.addEventListener('click', getInput);

@@ -4,6 +4,7 @@ const favoritesTab = document.getElementById('recipes-tab');
 const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
+const recipeColumns = document.getElementById('recipe-columns');
 const apiKey = '';
 
 var getInput = function(event) {
@@ -20,6 +21,8 @@ var getInput = function(event) {
     if (ingrInput) {
         ingrArr.push(ingrInput.replace(/,/g, '').split(' '));
     };
+
+    console.log(ingrArr)
 
     var restrInput = document.querySelectorAll('input[name="restriction"]:checked');
     var restrArr = [];
@@ -72,8 +75,7 @@ var errorMsg = function(message) {
     modalEl.classList.add('is-active');
     modalTextEl.textContent = message;
 
-    closeModal = event => {
-        event.preventDefault();
+    closeModal = () => {
         modalEl.classList.remove('is-active')
     }
 
@@ -93,6 +95,7 @@ var getRecipe = function(recipe) {
 
         if (response.ok) {
             response.json().then(function(data) {
+                console.log(data)
                 displayRecipes(data);
             })
         } 
@@ -106,6 +109,41 @@ var displayRecipes = function(recipes) {
 
     formCont.classList.add('hide');
     recipeCont.classList.remove('hide');
+
+    // creates recipe card
+    for (let i = 0; i < 9; i++) {
+        var columnEl = document.createElement('div');
+        columnEl.classList.add('column', 'is-one-third', 'is-flex');
+        recipeColumns.appendChild(columnEl);
+    
+        var cardEl = document.createElement('div');
+        cardEl.classList.add('card');
+        columnEl.appendChild(cardEl);
+
+        var figureEl = document.createElement('figure');
+        figureEl.classList.add('card-image', 'image', 'is-4by3');
+        cardEl.appendChild(figureEl);
+
+    
+        var recipeImg = document.createElement('img');
+        recipeImg.setAttribute('src', recipes[i].image);
+        recipeImg.setAttribute('alt', recipes[i].title);
+        figureEl.appendChild(recipeImg);
+
+        var cardContent = document.createElement('div');
+        cardContent.classList.add('card-content');
+        cardEl.appendChild(cardContent);
+
+        var recipeTitle = document.createElement('div');
+        recipeTitle.classList.add('title', 'is-4');   
+        recipeTitle.innerHTML = `<p>${recipes[i].title}</p>`;
+        cardContent.appendChild(recipeTitle);
+
+        var recipeDesc = document.createElement('div');
+        recipeDesc.classList.add('content');
+        recipeDesc.innerHTML = `Recipe found at <a href="${recipes[i].sourceUrl}" target="_blank">${recipes[i].creditsText}</a>`;
+        cardContent.appendChild(recipeDesc);
+    }
 }
 
 searchBtn.addEventListener('click', getInput);

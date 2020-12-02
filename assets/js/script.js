@@ -22,8 +22,6 @@ var getInput = function(event) {
         ingrArr.push(ingrInput.replace(/,/g, '').split(' '));
     };
 
-    console.log(ingrArr)
-
     var restrInput = document.querySelectorAll('input[name="restriction"]:checked');
     var restrArr = [];
     restrInput.forEach((checkbox) => {
@@ -67,20 +65,8 @@ var getData = function(cuisine, diet, ingr, restr) {
 };
 
 var errorMsg = function(message) {
-    var modalEl = document.querySelector('.modal');
-    var modalTextEl = document.querySelector('.modal-content');
-    var modalBg = document.querySelector('.modal-background');
-    var modalBtn = document.getElementById('modal-btn'); 
-
-    modalEl.classList.add('is-active');
+    console.log(message)
     modalTextEl.textContent = message;
-
-    closeModal = () => {
-        modalEl.classList.remove('is-active')
-    }
-
-    modalBg.addEventListener('click', closeModal);
-    modalBtn.addEventListener('click', closeModal);
 };
 
 var getRecipe = function(recipe) {
@@ -103,10 +89,6 @@ var getRecipe = function(recipe) {
 }
 
 var displayRecipes = function(recipes) {
-    searchTab.classList.remove('is-active', 'active-tab');
-    favoritesTab.classList.remove('is-active', 'active-tab');
-    recipesTab.classList.add('is-active', 'active-tab');
-
     formCont.classList.add('hide');
     recipeCont.classList.remove('hide');
 
@@ -123,7 +105,6 @@ var displayRecipes = function(recipes) {
         var figureEl = document.createElement('figure');
         figureEl.classList.add('card-image', 'image', 'is-4by3');
         cardEl.appendChild(figureEl);
-
     
         var recipeImg = document.createElement('img');
         recipeImg.setAttribute('src', recipes[i].image);
@@ -145,5 +126,10 @@ var displayRecipes = function(recipes) {
         cardContent.appendChild(recipeDesc);
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
 
 searchBtn.addEventListener('click', getInput);

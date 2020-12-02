@@ -4,227 +4,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Recipe Site</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
     <div class="bg">
         <div class="container-card">
-            <header class="is-fullwidth">
-                <nav class="tabs is-boxed is-fullwidth nav-tab">
-                    <div class="container">
-                        <ul class="has-text-weight-semibold">
-                            <li class="is-active active-tab" id="search-tab"><a>Search Recipes</a></li>
-                            <li class="" id="recipes-tab"><a>Suggested Recipes</a></li>
-                            <li class="" id ="favorites-tab"><a>My Favorite Recipes</a></li>
+            <header>
+                <nav class="light-green darken-4">
+                    <div class="nav-wrapper">
+                        <a class="brand-logo" href="/">
+                            What's For Dinner?
+                        </a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li id="search-tab"><a>Search Recipes</a></li>
+                            <li id="recipes-tab"><a>Suggested Recipes</a></li>
+                            <li id ="favorites-tab"><a>My Favorite Recipes</a></li>
                         </ul>
                     </div>
                 </nav>
-                <h1 class="is-size-3-mobile is-size-2 is-capitalized has-text-success has-text-weight-semibold ml-6">
-                    What's For Dinner?
-                </h1>
             </header>
-            <main class="m-6">
+            <main>
+                <!-- MODAL NOT WORKING -->
                 <!-- modal for error messages -->
-                <div class="modal">
-                    <div class="modal-background"></div>
-                    <div class="modal-content has-background-white p-4 is-rounded">
-                      <!-- intentionally left blank -->
-                    </div>
-                    <button type="button" class="modal-close is-large" id="modal-btn"></button>
+                <a class="waves-effect waves-light btn modal-trigger" href="#error-modal">Modal</a>
+
+                <!-- Modal Structure -->
+                <div id="error-modal" class="modal">
+                  <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
                   </div>
+                </div>
 
                 <!-- search form start -->
-                <div class="container mt-6" id="form-container">
-                    <div class="has-text-left">
-                        <p>
-                            Need a little inspiration for dinner?  Tell us what you're in the mood for and we'll help you find recipes, or don't tell us anything and let us surprise you!
-                        </p>
+                <div class="" id="form-container">
+                    <div class="row">
+                        <p>Need a little inspiration for dinner?  Tell us what you're in the mood for and we'll help you find recipes, or don't tell us anything and let us surprise you!</p>
                     </div>
-                    <div class="columns mt-2">
-                        <div class="column">
-                            <div class="field">
-                                <label for="cuisine-menu" class="label">Select a type of cuisine:</label>
-                                <div class="select is-success is-rounded is-fullwidth">
-                                    <select id="cuisine-menu">
-                                        <option value="" disabled selected hidden>Choose a Cuisine</option>
-                                        <option value="african">African</option>
-                                        <option value="american">American</option>
-                                        <option value="british">British</option>
-                                        <option value="cajun">Cajun</option>
-                                        <option value="caribbean">Caribbean</option>
-                                        <option value="chinese">Chinese</option>
-                                        <option value="european">European</option>
-                                        <option value="french">French</option>
-                                        <option value="german">German</option>
-                                        <option value="greek">Greek</option>
-                                        <option value="indian">Indian</option>
-                                        <option value="irish">Irish</option>
-                                        <option value="italian">Italian</option>
-                                        <option value="japanese">Japanese</option>
-                                        <option value="jewish">Jewish</option>
-                                        <option value="korean">Korean</option>
-                                        <option value="latin american">Latin</option>
-                                        <option value="mediterranean">Mediterranean</option>
-                                        <option value="mexican">Mexican</option>
-                                        <option value="middle eastern">Middle Eastern</option>
-                                        <option value="southern">Southern</option>
-                                        <option value="spanish">Spanish</option>
-                                        <option value="thai">Thai</option>
-                                        <option value="vietnamese">Vietnamese</option>
-                                        <option value="">Surprise me!</option>
-                                    </select>
-                                </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <div class="input-field col s12">
+                                <select id="cuisine-menu">
+                                    <option value="" disabled selected>Choose a Cuisine</option>
+                                    <option value="african">African</option>
+                                    <option value="american">American</option>
+                                    <option value="british">British</option>
+                                    <option value="cajun">Cajun</option>
+                                    <option value="caribbean">Caribbean</option>
+                                    <option value="chinese">Chinese</option>
+                                    <option value="european">European</option>
+                                    <option value="french">French</option>
+                                    <option value="german">German</option>
+                                    <option value="greek">Greek</option>
+                                    <option value="indian">Indian</option>
+                                    <option value="irish">Irish</option>
+                                    <option value="italian">Italian</option>
+                                    <option value="japanese">Japanese</option>
+                                    <option value="jewish">Jewish</option>
+                                    <option value="korean">Korean</option>
+                                    <option value="latin american">Latin</option>
+                                    <option value="mediterranean">Mediterranean</option>
+                                    <option value="mexican">Mexican</option>
+                                    <option value="middle eastern">Middle Eastern</option>
+                                    <option value="southern">Southern</option>
+                                    <option value="spanish">Spanish</option>
+                                    <option value="thai">Thai</option>
+                                    <option value="vietnamese">Vietnamese</option>
+                                    <option value="">Surprise me!</option>
+                                </select>
+                                <label for="cuisine-menu">Select a type of cuisine:</label>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="field">
-                                <label for="diet-menu" class="label">Diet Considerations:</label>
-                                <div class="select is-success is-rounded is-fullwidth">
-                                    <select id="diet-menu">
-                                        <option value="" disabled selected hidden>Choose a Diet Type</option>
-                                        <option value="gluten-free">Gluten Free</option>
-                                        <option value="ketogenic">Ketogenic</option>
-                                        <option value="lacto-vegetarian">Lacto-Vegetarian</option>
-                                        <option value="ovo-vegetarian">Ovo-Vegetarian</option>
-                                        <option value="paleo">Paleo</option>
-                                        <option value="pescetarian">Pescetarian</option>
-                                        <option value="primal">Primal</option>
-                                        <option value="vegan">Vegan</option>
-                                        <option value="vegetarian">Vegetarian</option>
-                                        <option value="whole30">Whole30</option>
-                                        <option value="">None</option>
-                                    </select>
-                                </div>
+                        <div class="col s12 m4">
+                            <div class="input-field col s12">
+                                <select id="diet-menu">
+                                    <option value="" disabled selected>Choose a Diet Type</option>
+                                    <option value="gluten-free">Gluten Free</option>
+                                    <option value="ketogenic">Ketogenic</option>
+                                    <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+                                    <option value="ovo-vegetarian">Ovo-Vegetarian</option>
+                                    <option value="paleo">Paleo</option>
+                                    <option value="pescetarian">Pescetarian</option>
+                                    <option value="primal">Primal</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="whole30">Whole30</option>
+                                    <option value="">None</option>
+                                </select>
+                                <label for="diet-menu">Diet Considerations:</label>
                             </div>
                         </div>    
-                        <div class="column">
-                            <div class="field">
-                                <label for="ingredients" class="label">Ingredients:</label>
-                                <div class="control">
-                                    <input type="text" class="input is-success is-rounded is-fullwidth" id='ingredients' placeholder="List some ingredients you'd like to use!">
+                        <div class="col s12 m4">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate" id="ingredients">
+                                    <label for="ingredients">List ingredients</label>
                                 </div>
                             </div>
                         </div>            
                     </div>
-                    <div class="label">Dietary Restrictions:</div>
-                    <div class="columns">
-                        <div class="column ml-3">
-                            <label class="checkbox">
+                    <div class="row">
+                        <div class="label">Dietary Restrictions:</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <label>
                                 <input type="checkbox" name="restriction" value="dairy"/>
-                                No Dairy
+                                <span>No Dairy</span>
                             </label><br />
-                            <label class="checkbox">
+                            <label>
                                 <input type="checkbox" name="restriction" value="egg" />
-                                No Eggs
+                                <span>No Eggs</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="gluten" />
-                                No Gluten
+                                <span>No Gluten</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="grain" />
-                                No Grains
+                                <span>No Grains</span>
                             </label>
                         </div>
-                        <div class="column ml-3">
+                        <div class="col s12 m4">
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="peanut" />
-                                No Peanuts
+                                <span>No Peanuts</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="seafood" />
-                                No Seafood
+                                <span>No Seafood</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="sesame" />
-                                No Sesame
+                                <span>No Sesame</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="shellfish" />
-                                No Shellfish
+                                <span>No Shellfish</span>
                             </label>
                         </div>
-                        <div class="column ml-3">
+                        <div class="col s12 m4">
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="soy" />
-                                No Soy
+                                <span>No Soy</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="sulfite" />
-                                No Sulfites
+                                <span>No Sulfites</span>
                             </label><br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="tree nut" />
-                                No Tree Nuts
+                                <span>No Tree Nuts</span>
                             </label>
                             <br />
                             <label class="checkbox">
                                 <input type="checkbox" name="restriction" value="wheat" />
-                                No Wheat
+                                <span>No Wheat</span>
                             </label>
                         </div>
                     </div>
-                    <button type="button" class="button is-success" id="search-btn">Search!</button>
+                    <button type="button" class="waves-effect waves-light btn light-green darken-4" id="search-btn">Search!</button>
                 </div>
                 <!-- search form end -->
 
-                <!-- recipe cards -->
-                <div class="container mt-16 hide" id="recipe-container">
-                    <div class="columns is-flex is-flex-direction-row is-flex-wrap-wrap" id="recipe-columns">
-                        <!-- <div class="column is-one-third is-flex">
-                            <div class="card flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <figure class=" card-image image is-4by3">
-                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                                        </figure>
-                                        <div class="card-content">
-                                            <div class="title is-4">
-                                                <p>Recipe Name</p>
-                                            </div>
-                                            <div class="content">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Phasellus nec iaculis mauris.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flip-card-back">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt quae aliquid ducimus assumenda ea delectus tempore corrupti possimus natus dignissimos, quis aperiam dolorum repudiandae totam perferendis, nesciunt quam a.
-                                    </div>
-                                </div>
+                <!-- recipe cards -->            
+                <div class="row" id="recipe-container">
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/1280x960" alt="Placeholder image">
+                                <span class="card-title">Card Title</span>
+                            </div>
+                            <div class="card-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                   Phasellus nec iaculis mauris.</p>
                             </div>
                         </div>
-                        <div class="column is-one-third is-flex">
-                            <div class="card flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <figure class=" card-image image is-4by3">
-                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                                        </figure>
-                                        <div class="card-content">
-                                            <div class="title is-4">
-                                                <p>Recipe Name</p>
-                                            </div>
-                                            <div class="content">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Phasellus nec iaculis mauris.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flip-card-back">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt quae aliquid ducimus assumenda ea delectus tempore corrupti possimus natus dignissimos, quis aperiam dolorum repudiandae totam perferendis, nesciunt quam a.
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/1280x960" alt="Placeholder image">
+                                <span class="card-title">Card Title</span>
                             </div>
-                        </div> -->
+                            <div class="card-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                   Phasellus nec iaculis mauris.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/1280x960" alt="Placeholder image">
+                                <span class="card-title">Card Title</span>
+                            </div>
+                            <div class="card-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                   Phasellus nec iaculis mauris.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- end of recipe cards -->
             </main>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

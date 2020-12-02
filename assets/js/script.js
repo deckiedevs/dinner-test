@@ -5,7 +5,7 @@ const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
 const recipeColumns = document.getElementById('recipe-columns');
-const apiKey = '';
+const apiKey = 'f373d2f3b2ed4c5799d7569b7b804930';
 
 var getInput = function(event) {
     event.preventDefault();
@@ -65,7 +65,12 @@ var getData = function(cuisine, diet, ingr, restr) {
 };
 
 var errorMsg = function(message) {
-    console.log(message)
+    var errorModal = document.querySelector('.modal')
+    var instances = M.Modal.init(errorModal);
+    var instance = M.Modal.getInstance(errorModal);
+    instance.open();
+
+    var modalTextEl = document.querySelector('.modal-content');
     modalTextEl.textContent = message;
 };
 
@@ -126,10 +131,5 @@ var displayRecipes = function(recipes) {
         cardContent.appendChild(recipeDesc);
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
 
 searchBtn.addEventListener('click', getInput);

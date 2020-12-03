@@ -4,11 +4,7 @@
     display: border-box;
 }
 
-.hide {
-    display: none;
-}
-
-.bg {
+body {
     background-image: url(../images/bg-img.jpeg);
     height: 100vh;
     position: relative;
@@ -16,6 +12,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.hide {
+    display: none;
 }
 
 .container-card {

@@ -4,7 +4,6 @@ const favoritesTab = document.getElementById('recipes-tab');
 const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
-const recipeColumns = document.getElementById('recipe-columns');
 const apiKey = '';
 
 var getInput = function(event) {
@@ -100,35 +99,31 @@ var displayRecipes = function(recipes) {
     // creates recipe card
     for (let i = 0; i < 9; i++) {
         var columnEl = document.createElement('div');
-        columnEl.classList.add('column', 'is-one-third', 'is-flex');
-        recipeColumns.appendChild(columnEl);
+        columnEl.classList.add('col', 's12', 'm4');
+        recipeCont.appendChild(columnEl);
     
         var cardEl = document.createElement('div');
         cardEl.classList.add('card');
         columnEl.appendChild(cardEl);
 
-        var figureEl = document.createElement('figure');
-        figureEl.classList.add('card-image', 'image', 'is-4by3');
-        cardEl.appendChild(figureEl);
+        var imgEl = document.createElement('div');
+        imgEl.classList.add('card-image');
+        cardEl.appendChild(imgEl);
     
         var recipeImg = document.createElement('img');
         recipeImg.setAttribute('src', recipes[i].image);
         recipeImg.setAttribute('alt', recipes[i].title);
-        figureEl.appendChild(recipeImg);
+        imgEl.appendChild(recipeImg);
+
+        var recipeTitle = document.createElement('span');
+        recipeTitle.classList.add('card-title');   
+        recipeTitle.textContent = recipes[i].title;
+        imgEl.appendChild(recipeTitle);
 
         var cardContent = document.createElement('div');
         cardContent.classList.add('card-content');
+        cardContent.innerHTML = `<p>Recipe found at <a href="${recipes[i].sourceUrl}" target="_blank">${recipes[i].creditsText}</a></p>`;
         cardEl.appendChild(cardContent);
-
-        var recipeTitle = document.createElement('div');
-        recipeTitle.classList.add('title', 'is-4');   
-        recipeTitle.innerHTML = `<p>${recipes[i].title}</p>`;
-        cardContent.appendChild(recipeTitle);
-
-        var recipeDesc = document.createElement('div');
-        recipeDesc.classList.add('content');
-        recipeDesc.innerHTML = `Recipe found at <a href="${recipes[i].sourceUrl}" target="_blank">${recipes[i].creditsText}</a>`;
-        cardContent.appendChild(recipeDesc);
     }
 }
 

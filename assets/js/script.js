@@ -98,9 +98,15 @@ var displayRecipes = function(recipes) {
 
     // creates recipe card
     for (let i = 0; i < 9; i++) {
+        var modalTrigger = document.createElement('a');
+        modalTrigger.classList.add('recipe-link', 'modal-trigger')
+        modalTrigger.setAttribute('href', '#recipe-modal');
+        modalTrigger.setAttribute('id', `recipe-${i}`);
+        recipeCont.appendChild(modalTrigger); 
+
         var columnEl = document.createElement('div');
         columnEl.classList.add('col', 's12', 'm4');
-        recipeCont.appendChild(columnEl);
+        modalTrigger.appendChild(columnEl);
     
         var cardEl = document.createElement('div');
         cardEl.classList.add('card');
@@ -115,16 +121,26 @@ var displayRecipes = function(recipes) {
         recipeImg.setAttribute('alt', recipes[i].title);
         imgEl.appendChild(recipeImg);
 
-        var recipeTitle = document.createElement('span');
-        recipeTitle.classList.add('card-title');   
+        var recipeTitle = document.createElement('div');
+        recipeTitle.classList.add('card-content');   
         recipeTitle.textContent = recipes[i].title;
-        imgEl.appendChild(recipeTitle);
-
-        var cardContent = document.createElement('div');
-        cardContent.classList.add('card-content');
-        cardContent.innerHTML = `<p>Recipe found at <a href="${recipes[i].sourceUrl}" target="_blank">${recipes[i].creditsText}</a></p>`;
-        cardEl.appendChild(cardContent);
+        cardEl.appendChild(recipeTitle);
     }
+    // fullRecipe(recipes);
 }
+
+// var fullRecipe = function(details) {
+//     var colOne = document.getElementById('recipes-col-1');
+//     var colTwo = document.getElementById('recipes-col-2');
+// 
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var modalElems = document.querySelectorAll('.modal');
+    var modalInstances = M.Modal.init(modalElems);
+
+    var selectElems = document.querySelectorAll('select');
+    var selectInstances = M.FormSelect.init(selectElems);
+});
 
 searchBtn.addEventListener('click', getInput);

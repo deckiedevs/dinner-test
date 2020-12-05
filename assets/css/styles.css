@@ -43,3 +43,15 @@ body {
   margin-top: 7px;
   padding-left: 8px;
 }
+
+.is-favorite {
+  visibility: hidden;
+  position: relative;
+}
+
+.is-favorite:after {visibility: visible;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+  content: "favorite";
+}

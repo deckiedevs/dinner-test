@@ -133,6 +133,7 @@ var displayRecipes = function(recipes) {
 
 var fullRecipe = function(details) {
     var recipeHeader = document.getElementById('recipe-header');
+    var recipeInfoEl = document.getElementById('recipe-info');
     var recipeCards = document.querySelectorAll('.recipe-card');
     var colOne = document.getElementById('recipes-col-1');
     var colTwo = document.getElementById('recipes-col-2');
@@ -150,7 +151,14 @@ var fullRecipe = function(details) {
             // gets index of clicked card
             var index = this.getAttribute('id').replace('card-', '');
 
+            // header information
             recipeHeader.textContent = details[index].title;
+            var readyTime = details[index].readyInMinutes;
+            var servings = details[index].servings;
+            var sourceSite = details[index].sourceName;
+            var sourceUrl = details[index].sourceUrl;
+
+            recipeInfoEl.innerHTML = `Prep Time: ${readyTime} | Servings: ${servings} | Recipe From: <a href="${sourceUrl}" target="_blank">${sourceSite}</a>`
 
             // grabs all ingredients from data
             var ingrList = details[index].extendedIngredients;

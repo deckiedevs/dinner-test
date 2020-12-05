@@ -108,7 +108,7 @@ var displayRecipes = function(recipes) {
         modalTrigger.appendChild(columnEl);
     
         var cardEl = document.createElement('div');
-        cardEl.classList.add('card', 'recipe-card');
+        cardEl.classList.add('card', 'recipe-card', 'medium');
         cardEl.setAttribute('id', `card-${i}`)
         columnEl.appendChild(cardEl);
 
@@ -132,6 +132,7 @@ var displayRecipes = function(recipes) {
 }
 
 var fullRecipe = function(details) {
+    var recipeHeader = document.getElementById('recipe-header');
     var recipeCards = document.querySelectorAll('.recipe-card');
     var colOne = document.getElementById('recipes-col-1');
     var colTwo = document.getElementById('recipes-col-2');
@@ -145,18 +146,23 @@ var fullRecipe = function(details) {
             // clears modal from previous recipe
             colOne.textContent = '';
             colTwo.textContent = '';
-            instructions.textContent = '';
-            winePairingEl.textContent = '';
 
+            // gets index of clicked card
             var index = this.getAttribute('id').replace('card-', '');
-            var ingrList = details[index].extendedIngredients;
+
+            recipeHeader.textContent = details[index].title;
 
             // grabs all ingredients from data
+            var ingrList = details[index].extendedIngredients;
+
             for (var j = 0; j < ingrList.length; j++) {
                 var ingrQty = ingrList[j].measures.us.amount;
                 var ingrUnit = ingrList[j].measures.us.unitShort;
                 var ingrName = ingrList[j].name;
 
+                if (!Number.isInteger(ingrQty)) {
+                    ingrQty = convertFraction(ingrQty).trim();
+                }
 
                 var ingrItem = document.createElement('p');
                 ingrItem.textContent = `${ingrQty} ${ingrUnit} - ${ingrName}`;
@@ -182,6 +188,29 @@ var fullRecipe = function(details) {
         })
     }
 }
+
+convertFraction = num => {
+    var fractionObj = math.fraction(num);
+    var numerator = fractionObj.n;
+    var denominator = fractionObj.d;
+    var wholeNum = '';
+
+    if (numerator > denominator) {
+        wholeNum = Math.floor(numerator / denominator);
+        numerator %= denominator
+    }
+
+    // identifies when the fraction is a third
+    if (numerator === 333) {
+        numerator = 1;
+        denominator = 3;
+    } else if (numerator === 666) {
+        numerator = 2;
+        denominator = 3;
+    }
+    
+    return `${wholeNum} ${numerator}/${denominator}`
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     var modalElems = document.querySelectorAll('.modal');

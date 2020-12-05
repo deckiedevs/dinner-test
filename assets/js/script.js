@@ -55,7 +55,7 @@ var getData = function(cuisine, diet, ingr, restr) {
                 }
             });
         } else {
-            errorMsg(`Error: ${response.statusText}`);
+            errorMsg(`Error: ${response.status}`);
         }
     })
     .catch(function(error) {
@@ -64,12 +64,12 @@ var getData = function(cuisine, diet, ingr, restr) {
 };
 
 var errorMsg = function(message) {
-    var errorModal = document.querySelector('.modal')
+    var errorModal = document.getElementById('error-modal')
     var instances = M.Modal.init(errorModal);
     var instance = M.Modal.getInstance(errorModal);
     instance.open();
 
-    var modalTextEl = document.querySelector('.modal-content');
+    var modalTextEl = document.getElementById('error-message');
     modalTextEl.textContent = message;
 };
 
@@ -87,21 +87,20 @@ var getRecipe = function(recipe) {
             response.json().then(function(data) {
                 console.log(data)
                 displayRecipes(data);
-            })
-        } 
-    })
-}
+            });
+        };
+    });
+};
 
 var displayRecipes = function(recipes) {
     formCont.classList.add('hide');
     recipeCont.classList.remove('hide');
 
-    // creates recipe card
     for (let i = 0; i < 9; i++) {
+        // creates displayed cards
         var modalTrigger = document.createElement('a');
         modalTrigger.classList.add('recipe-link', 'modal-trigger')
-        modalTrigger.setAttribute('href', '#recipe-modal');
-        modalTrigger.setAttribute('id', `recipe-${i}`);
+        modalTrigger.setAttribute('href', `#recipe-modal`);
         recipeCont.appendChild(modalTrigger); 
 
         var columnEl = document.createElement('div');
@@ -109,7 +108,8 @@ var displayRecipes = function(recipes) {
         modalTrigger.appendChild(columnEl);
     
         var cardEl = document.createElement('div');
-        cardEl.classList.add('card');
+        cardEl.classList.add('card', 'recipe-card');
+        cardEl.setAttribute('id', `card-${i}`)
         columnEl.appendChild(cardEl);
 
         var imgEl = document.createElement('div');
@@ -125,15 +125,63 @@ var displayRecipes = function(recipes) {
         recipeTitle.classList.add('card-content');   
         recipeTitle.textContent = recipes[i].title;
         cardEl.appendChild(recipeTitle);
+
     }
-    // fullRecipe(recipes);
+
+    fullRecipe(recipes);
 }
 
-// var fullRecipe = function(details) {
-//     var colOne = document.getElementById('recipes-col-1');
-//     var colTwo = document.getElementById('recipes-col-2');
-// 
-// }
+var fullRecipe = function(details) {
+    var recipeCards = document.querySelectorAll('.recipe-card');
+    var colOne = document.getElementById('recipes-col-1');
+    var colTwo = document.getElementById('recipes-col-2');
+    var instructions = document.getElementById('instructions');
+    var wineHeader = document.getElementById('wine-header')
+    var winePairingEl = document.getElementById('wine-pairing');
+
+    for (var i = 0; i < recipeCards.length; i++) {
+        recipeCards[i].addEventListener('click', function(event) {
+
+            // clears modal from previous recipe
+            colOne.textContent = '';
+            colTwo.textContent = '';
+            instructions.textContent = '';
+            winePairingEl.textContent = '';
+
+            var index = this.getAttribute('id').replace('card-', '');
+            var ingrList = details[index].extendedIngredients;
+
+            // grabs all ingredients from data
+            for (var j = 0; j < ingrList.length; j++) {
+                var ingrQty = ingrList[j].measures.us.amount;
+                var ingrUnit = ingrList[j].measures.us.unitShort;
+                var ingrName = ingrList[j].name;
+
+
+                var ingrItem = document.createElement('p');
+                ingrItem.textContent = `${ingrQty} ${ingrUnit} - ${ingrName}`;
+
+                // alternates columns for ingredients
+                if (j % 2 === 0) {
+                    colOne.appendChild(ingrItem);
+                } else {
+                    colTwo.appendChild(ingrItem);
+                }
+
+                // recipe instructions
+                instructions.innerHTML = details[index].instructions;
+
+                // suggested wine pairing
+                var winePairing = details[index].winePairing.pairingText;
+
+                if (winePairing) { 
+                    wineHeader.classList.remove('hide');
+                    winePairingEl.textContent = winePairing;
+                }
+            }
+        })
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     var modalElems = document.querySelectorAll('.modal');

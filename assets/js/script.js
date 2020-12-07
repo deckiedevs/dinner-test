@@ -4,6 +4,8 @@ const favoritesTab = document.getElementById('recipes-tab');
 const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
+const favBtn = document.getElementById('fav-btn');
+const favIcon = document.getElementById('fav-icon');
 const apiKey = '';
 
 var getInput = function(event) {
@@ -32,14 +34,14 @@ var getInput = function(event) {
 
 var getData = function(cuisine, diet, ingr, restr) {
 
-    var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}`
+    var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=9`
     var paraName = ['cuisine', 'diet', 'includeIngredients', 'intolerances'];
     var paraValue = [cuisine, diet, ingr, restr];
 
     // concatenates search parameters
     for (let i = 0; i < paraValue.length; i++) {
         if (paraValue[i].length > 0) {
-            apiUrl += `&${paraName[i]}=${paraValue[i]}`
+            apiUrl += `&${paraName[i]}=${paraValue[i]}`;
         }
     }
 
@@ -96,7 +98,7 @@ var displayRecipes = function(recipes) {
     formCont.classList.add('hide');
     recipeCont.classList.remove('hide');
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < recipes.length; i++) {
         // creates displayed cards
         var modalTrigger = document.createElement('a');
         modalTrigger.classList.add('recipe-link', 'modal-trigger')
@@ -108,8 +110,8 @@ var displayRecipes = function(recipes) {
         modalTrigger.appendChild(columnEl);
     
         var cardEl = document.createElement('div');
-        cardEl.classList.add('card', 'recipe-card', 'medium');
-        cardEl.setAttribute('id', `card-${i}`)
+        cardEl.classList.add('card', 'recipe-card');
+        cardEl.setAttribute('id', `card-${i}`);
         columnEl.appendChild(cardEl);
 
         var imgEl = document.createElement('div');
@@ -229,3 +231,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 searchBtn.addEventListener('click', getInput);
+favBtn.addEventListener('click', function() {
+    favIcon.classList.toggle('is-favorite');
+});

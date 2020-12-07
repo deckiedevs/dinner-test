@@ -6,6 +6,7 @@
     <title>Test Recipe Site</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
@@ -170,16 +171,23 @@
             <!-- full recipe modal -->
             <div id="recipe-modal" class="modal">
                 <div class="modal-content">
-                    <h4 id='recipe-header'></h4>
-                    <div class="row" id="recipe-info"></div>
-                    <h5>Ingredients</h3>
+                    <div class="row">
+                        <div class="col s10">
+                            <h5 id='recipe-header'></h4>
+                            <div class="row" id="recipe-info"></div>
+                        </div>
+                        <div class="col s2">
+                            <a class="btn-floating waves-light light-green darken-4" id="fav-btn"><i class="material-icons" id="fav-icon">favorite_border</i></a>
+                        </div>
+                    </div>
+                    <h6>Ingredients</h3>
                     <div class="row">
                         <div class="col s12 m6" id="recipes-col-1"></div>
                         <div class="col s2 m6" id="recipes-col-2"></div>
                     </div>
-                    <h5>Instructions</h3>
+                    <h6>Instructions</h3>
                     <div class="row" id="instructions"></div>
-                    <h5 class="hide" id="wine-header">Suggested Wine Pairing</h5>
+                    <h6 class="hide" id="wine-header">Suggested Wine Pairing</h5>
                     <div class="row" id="wine-pairing"></div>
                 </div>
             </div>

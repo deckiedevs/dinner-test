@@ -1,45 +1,57 @@
 * {
-    margin: 0;
-    padding: 0;
-    display: border-box;
+  margin: 0;
+  padding: 0;
+  display: border-box;
 }
 
 body {
-    background-image: url(../images/bg-img.jpeg);
-    height: 100vh;
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url(../images/bg-img.jpeg);
+  height: 100vh;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .container-card {
-    height: 80%;
-    width: 80%;
-    margin: 5% 10%;
-    background-color: rgba(255, 255, 255);
-    position: absolute;
-    border-radius: 10px;
+  height: 80%;
+  width: 80%;
+  margin: 5% 10%;
+  background-color: rgba(255, 255, 255);
+  position: absolute;
+  border-radius: 10px;
 }
 
 #form-container {
-  margin: 50px 75px;
+margin: 50px 75px;
 }
 
 #recipe-modal {
-  padding: 10px 20px;
+padding: 10px 20px;
 }
 
 #recipe-modal ol, #recipe-modal ul {
-  margin-left: 20px;
+margin-left: 20px;
 }
 
 #recipe-modal ol li, #recipe-modal ul li {
-  margin-top: 7px;
-  padding-left: 8px;
+margin-top: 7px;
+padding-left: 8px;
+}
+
+.is-favorite {
+visibility: hidden;
+position: relative;
+}
+
+.is-favorite:after {visibility: visible;
+position: absolute;
+top: 0px;
+left: 8px;
+content: "favorite";
 }

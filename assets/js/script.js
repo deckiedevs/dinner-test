@@ -6,6 +6,8 @@ const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
 const favBtn = document.getElementById('fav-btn');
 const favIcon = document.getElementById('fav-icon');
+let favRecipes = [];
+let mySet = new Set(favRecipes)
 const apiKey = '';
 
 var getInput = function(event) {
@@ -162,6 +164,9 @@ var fullRecipe = function(details) {
 
             recipeInfoEl.innerHTML = `Prep Time: ${readyTime} | Servings: ${servings} | Recipe From: <a href="${sourceUrl}" target="_blank">${sourceSite}</a>`
 
+            // sets recipe ID as data value for save feature
+            favBtn.setAttribute('data-id', details[index].id);
+
             // grabs all ingredients from data
             var ingrList = details[index].extendedIngredients;
 
@@ -222,6 +227,21 @@ convertFraction = num => {
     return `${wholeNum} ${numerator}/${denominator}`
 };
 
+var saveFavorite = function(event) {
+
+    var recipeId = this.getAttribute('data-id');
+    favIcon.classList.toggle('is-favorite');
+
+
+    if (mySet.has(recipeId)) {
+        console.log(`${recipeId} is already in array`)
+    } else {
+        favRecipes.push(recipeId)
+    }
+
+    console.log(favRecipes);
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     var modalElems = document.querySelectorAll('.modal');
     var modalInstances = M.Modal.init(modalElems);
@@ -231,6 +251,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 searchBtn.addEventListener('click', getInput);
-favBtn.addEventListener('click', function() {
-    favIcon.classList.toggle('is-favorite');
-});
+favBtn.addEventListener('click', saveFavorite);

@@ -1,13 +1,10 @@
-const searchTab = document.getElementById('search-tab');
-const recipesTab = document.getElementById('recipes-tab');
-const favoritesTab = document.getElementById('recipes-tab');
+const apiKey = '';
 const formCont = document.getElementById('form-container');
 const recipeCont = document.getElementById('recipe-container');
 const searchBtn = document.getElementById('search-btn');
 const favBtn = document.getElementById('fav-btn');
 const favIcon = document.getElementById('fav-icon');
 let favRecipes = [];
-const apiKey = '';
 
 var getInput = function(event) {
     event.preventDefault();
@@ -164,16 +161,18 @@ var fullRecipe = function(details) {
             recipeInfoEl.innerHTML = `Prep Time: ${readyTime} | Servings: ${servings} | Recipe From: <a href="${sourceUrl}" target="_blank">${sourceSite}</a>`
 
             // favorite button status
-            if (favRecipes.indexOf(details[index].id) === -1) {
-                console.log(details[index].id)
-                console.log(favRecipes.indexOf(details[index].id))
+            var apiId = details[index].id;
+
+            if (favRecipes.indexOf(apiId) === -1) {
+                console.log(apiId);
+                console.log(favRecipes.indexOf(apiId));
                 favIcon.textContent = 'favorite_border';
             } else {
                 favIcon.textContent = 'favorite';
             }
 
             // sets recipe ID as data value for save feature
-            favBtn.setAttribute('data-id', details[index].id);
+            favBtn.setAttribute('data-id', apiId);
 
             // grabs all ingredients from data
             var ingrList = details[index].extendedIngredients;
@@ -263,9 +262,10 @@ loadFavorites = () => {
     if (!favRecipes) { 
         favRecipes = [];
         return false;
-    }
-}
+    };
+};
 
+// initializer for materialize modals and forms
 document.addEventListener('DOMContentLoaded', function() {
     var modalElems = document.querySelectorAll('.modal');
     var modalInstances = M.Modal.init(modalElems);

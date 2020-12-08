@@ -47,14 +47,8 @@ body {
 }
 
 /* .is-favorite {
-visibility: hidden;
-position: relative;
-} */
-
-.is-favorite {
   visibility: visible;
   position: relative;
-  /* top: 0px;
-  left: 8px; */
-  content: "favorite";
-}
+  top: 0px;
+  left: 8px;
+} */

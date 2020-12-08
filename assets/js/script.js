@@ -147,7 +147,7 @@ var fullRecipe = function(details) {
     for (var i = 0; i < recipeCards.length; i++) {
         recipeCards[i].addEventListener('click', function(event) {
 
-            // clears modal from previous recipe
+            // clears previous recipe from modal
             colOne.textContent = '';
             colTwo.textContent = '';
 
@@ -163,11 +163,13 @@ var fullRecipe = function(details) {
 
             recipeInfoEl.innerHTML = `Prep Time: ${readyTime} | Servings: ${servings} | Recipe From: <a href="${sourceUrl}" target="_blank">${sourceSite}</a>`
 
-            // favorite button toggle
+            // favorite button status
             if (favRecipes.indexOf(details[index].id) === -1) {
-                favBtn.classList.add('is-favorite');
+                console.log(details[index].id)
+                console.log(favRecipes.indexOf(details[index].id))
+                favIcon.textContent = 'favorite_border';
             } else {
-                favBtn.classList.remove('is-favorite');
+                favIcon.textContent = 'favorite';
             }
 
             // sets recipe ID as data value for save feature
@@ -181,6 +183,7 @@ var fullRecipe = function(details) {
                 var ingrUnit = ingrList[j].measures.us.unitShort;
                 var ingrName = ingrList[j].name;
 
+                // converts decimals into fractions
                 if (!Number.isInteger(ingrQty)) {
                     ingrQty = convertFraction(ingrQty).trim();
                 }
@@ -216,8 +219,9 @@ convertFraction = num => {
     var denominator = fractionObj.d;
     var wholeNum = '';
 
+    // converts improper fraction to mixed fraction
     if (numerator > denominator) {
-        wholeNum = Math.floor(numerator / denominator);
+        wholeNum = `${Math.floor(numerator / denominator)} `;
         numerator %= denominator
     }
 
@@ -230,29 +234,37 @@ convertFraction = num => {
         denominator = 3;
     }
     
-    return `${wholeNum} ${numerator}/${denominator}`
+    return `${wholeNum}${numerator}/${denominator}`
 };
 
 var saveFavorite = function(event) {
 
     var recipeId = this.getAttribute('data-id');
-    // favIcon.classList.toggle('is-favorite');
 
-    // checks if recipe is not a favorite
+    // if recipe is not already a favorite, add to favorites
     if (favRecipes.indexOf(recipeId) === -1) {
         favRecipes.push(recipeId);
-        favBtn.classList.add('is-favorite');
         favIcon.textContent = "favorite";
-    } 
-    // recipe is a favorite already
-    else {
-        favRecipes.splice(favRecipes.indexOf(recipeId), 1)
-        favBtn.classList.remove('is-favorite');
-        favIcon.textContent = "favorite_border";
-    }
 
-    console.log(favRecipes);
+        localStorage.setItem('favorites', JSON.stringify(favRecipes));
+    } 
+    // recipe is already a favorite, remove from favorites
+    else {
+        favRecipes.splice(favRecipes.indexOf(recipeId), 1);
+        favIcon.textContent = "favorite_border";
+        
+        localStorage.setItem('favorites', JSON.stringify(favRecipes));
+    };
 };
+
+loadFavorites = () => {
+    favRecipes = JSON.parse(localStorage.getItem('favorites'));
+
+    if (!favRecipes) { 
+        favRecipes = [];
+        return false;
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     var modalElems = document.querySelectorAll('.modal');
@@ -261,6 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var selectElems = document.querySelectorAll('select');
     var selectInstances = M.FormSelect.init(selectElems);
 });
+
+loadFavorites();
 
 searchBtn.addEventListener('click', getInput);
 favBtn.addEventListener('click', saveFavorite);

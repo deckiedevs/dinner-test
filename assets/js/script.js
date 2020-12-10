@@ -161,11 +161,9 @@ var fullRecipe = function(details) {
             recipeInfoEl.innerHTML = `Prep Time: ${readyTime} | Servings: ${servings} | Recipe From: <a href="${sourceUrl}" target="_blank">${sourceSite}</a>`
 
             // favorite button status
-            var apiId = details[index].id;
+            var apiId = JSON.stringify(details[index].id);
 
-            if (favRecipes.indexOf(apiId) === -1) {
-                console.log(apiId);
-                console.log(favRecipes.indexOf(apiId));
+            if (favRecipes.indexOf(apiId) == -1) {
                 favIcon.textContent = 'favorite_border';
             } else {
                 favIcon.textContent = 'favorite';
@@ -257,7 +255,8 @@ var saveFavorite = function(event) {
 };
 
 loadFavorites = () => {
-    favRecipes = JSON.parse(localStorage.getItem('favorites'));
+    favRecipes = localStorage.getItem('favorites');
+    console.log(favRecipes)
 
     if (!favRecipes) { 
         favRecipes = [];
